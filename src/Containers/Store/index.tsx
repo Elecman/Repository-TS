@@ -1,26 +1,27 @@
-import { createContext, FC, ReactNode, useContext, useId } from "react";
-import { CounterService, CounterServiceAPI } from "../../Services/Counter";
-import { observer, useLocalObservable, useLocalStore } from "mobx-react-lite";
+import { createContext, FC, ReactNode, useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { UserService, UserServiceAPI } from "../../Services/UserService";
+import { BeerService, BeerServiceAPI } from "../../Services/BeerService";
 
 export interface FCWithChildren {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 interface IInitialStore {
-  CounterService: CounterService
+  UserService: UserService;
+  BeerService: BeerService;
 }
 
 const initialStore: IInitialStore = {
-  CounterService: CounterServiceAPI
-}
+  UserService: UserServiceAPI,
+  BeerService: BeerServiceAPI
+};
 
 export const StoreContext = createContext<IInitialStore>(initialStore);
 
 export const StoreProvider: FC<FCWithChildren> = observer(
-  ({children}) => <StoreContext.Provider value={initialStore}>{children}</StoreContext.Provider>)
+  ({ children }) => <StoreContext.Provider value={initialStore}>{children}</StoreContext.Provider>);
 
 export function useStore() {
-  return useLocalObservable(() => ({
-    CounterService: CounterServiceAPI
-  }))
+  return useContext(StoreContext);
 }
