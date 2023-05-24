@@ -21,7 +21,7 @@ export class UserService implements IBaseService<TUserFragment> {
     const data = await this.repository.fetchAll();
     runInAction(() => {
       if (data) {
-        this.userCollection = this.adapter.createCollection(data)
+        this.userCollection = this.adapter.createCollection(data);
       }
     });
   }
@@ -35,15 +35,19 @@ export class UserService implements IBaseService<TUserFragment> {
   }
 
   create(entity: Omit<TUserFragment, "id">): Promise<void> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   delete(id: string): Promise<void> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   fetchOne(id: string): Promise<void> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
+  }
+
+  fetchMultiple(id: string[]): Promise<void> {
+    throw new Error("Method not implemented.");
   }
 }
 

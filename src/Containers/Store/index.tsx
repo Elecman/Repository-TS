@@ -2,6 +2,7 @@ import { createContext, FC, ReactNode, useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { UserService, UserServiceAPI } from "../../Services/UserService";
 import { BeerService, BeerServiceAPI } from "../../Services/BeerService";
+import { UserBeerService, UserBeerServiceAPI } from "../../Services/UserBeerService";
 
 export interface FCWithChildren {
   children?: ReactNode;
@@ -10,11 +11,13 @@ export interface FCWithChildren {
 interface IInitialStore {
   UserService: UserService;
   BeerService: BeerService;
+  UserBeerService: UserBeerService;
 }
 
 const initialStore: IInitialStore = {
   UserService: UserServiceAPI,
-  BeerService: BeerServiceAPI
+  BeerService: BeerServiceAPI,
+  UserBeerService: UserBeerServiceAPI
 };
 
 export const StoreContext = createContext<IInitialStore>(initialStore);

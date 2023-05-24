@@ -23,7 +23,7 @@ export const UserPage = observer(() => {
       ...UserService.userCollection[values?.uid],
       ...values
     };
-    await UserService.update({ ...newLogin });
+    await UserService.update(newLogin);
   };
 
   const handleClickRow = (record: TUserFragment) => {

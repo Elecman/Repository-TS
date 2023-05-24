@@ -23,7 +23,7 @@ export const BeersPage = observer(() => {
       ...BeerService.beerCollection[values?.uid],
       ...values
     };
-    await BeerService.update({ ...newBeer });
+    await BeerService.update(newBeer);
   };
 
   const handleClickRow = (record: TBeerFragment) => {

@@ -9,29 +9,33 @@ export class BeerService implements IBaseService<TBeerFragment> {
   @observable
   public beerCollection: TBeerModel = {};
 
-  constructor(private repository: BeerRepository,private adapter: BeerAdapter) {
+  constructor(private repository: BeerRepository, private adapter: BeerAdapter) {
     makeAutoObservable(this);
   }
 
+  fetchMultiple(id: string[]): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
   create(entity: Omit<TBeerFragment, "id">): Promise<void> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   delete(id: string): Promise<void> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   public async fetchAll(): Promise<void> {
     const data = await this.repository.fetchAll();
     runInAction(() => {
       if (data) {
-        this.beerCollection = this.adapter.createCollection(data)
+        this.beerCollection = this.adapter.createCollection(data);
       }
     });
   }
 
   fetchOne(id: string): Promise<void> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   public async update(entity: Partial<TBeerFragment>): Promise<void> {
