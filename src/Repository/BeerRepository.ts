@@ -17,22 +17,25 @@ export class BeerRepository implements IBaseRepository<TBeerFragment> {
     } catch (e) {
       console.error(e);
     }
-    return Promise.resolve(undefined);
   }
 
   public async fetchOne(id: string): Promise<TMaybe<TBeerFragment>> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   public async update(entity: TBeerFragment): Promise<TMaybe<TBeerFragment>> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   public async create(entity: Omit<TBeerFragment, "id">): Promise<TMaybe<TBeerFragment>> {
-    return Promise.resolve(undefined);
+    throw new Error("Method not implemented.");
   }
 
   public async delete(id: string): Promise<boolean> {
-    return Promise.resolve(false);
+    throw new Error("Method not implemented.");
+  }
+
+  fetchMultiple(id: string[]): Promise<TMaybe<TBeerFragment[]>> {
+    throw new Error("Method not implemented.");
   }
 }
