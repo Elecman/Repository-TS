@@ -1,17 +1,17 @@
-import { observer } from "mobx-react-lite";
-import { useStore } from "../../Containers/Store";
-import { useForm, useWatch } from "antd/es/form/Form";
-import { useCallback, useEffect } from "react";
-import { TUserBeerFragment } from "../../Scheme/UserBeerScheme";
-import { Button, Col, Form, Input, Row, Table } from "antd";
-import { userBeerTable } from "../../userBeerTable";
-import { TUserFragment } from "../../Scheme/UserScheme";
-import { TBeerFragment } from "../../Scheme/BeerScheme";
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../Containers/Store';
+import { useForm, useWatch } from 'antd/es/form/Form';
+import { useCallback, useEffect } from 'react';
+import { TUserBeerFragment } from '../../Scheme/UserBeerScheme';
+import { Button, Col, Form, Input, Row, Table } from 'antd';
+import { userBeerTable } from '../../userBeerTable';
+import { TUserFragment } from '../../Scheme/UserScheme';
+import { TBeerFragment } from '../../Scheme/BeerScheme';
 
 export const UserBeersPage = observer(() => {
   const { UserBeerService, UserService, BeerService } = useStore();
   const [form] = useForm();
-  const watchId = useWatch("id", form);
+  const watchId = useWatch('id', form);
 
   useEffect(() => {
     (async () => {
@@ -21,13 +21,12 @@ export const UserBeersPage = observer(() => {
   }, []);
 
   const dataHandler = useCallback(async () => {
-    if (Object.keys(BeerService.beerCollection).length && Object.keys(UserService.userCollection).length) {
-      await UserBeerService.update({
-        users: UserService.userCollection,
-        beers: BeerService.beerCollection
-      });
-    }
+    await UserBeerService.update({
+      users: UserService.userCollection,
+      beers: BeerService.beerCollection
+    });
   }, [BeerService.beerCollection, UserService.userCollection]);
+  console.log(UserService.userCollection, 'UserService.userCollection')
 
   useEffect(() => {
     (async () => {
@@ -94,7 +93,7 @@ export const UserBeersPage = observer(() => {
               }
             };
           }}
-          rowKey={(record) => record?.uid ?? ""}
+          rowKey={(record) => record?.uid ?? ''}
           loading={!UserBeerService.userBeerCollection} />
       </Col>
     </Row>

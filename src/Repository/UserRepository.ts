@@ -35,7 +35,7 @@ export class UserRepository implements IBaseRepository<TUserFragment> {
     throw new Error("Method not implemented.");
   }
 
-  fetchMultiple(id: string[]): Promise<TMaybe<TUserFragment[]>> {
+  public async fetchMultiple(id: string[]): Promise<TMaybe<TUserFragment[]>> {
     throw new Error("Method not implemented.");
   }
 }

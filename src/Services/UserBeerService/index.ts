@@ -25,7 +25,7 @@ export class UserBeerService implements IBaseService<TUserBeersScheme> {
   public async update(entity: TUserBeersScheme): Promise<void> {
     const newCollection = await this.adapter.createCollection(entity);
     runInAction(() => {
-      set(this.userBeerCollection, newCollection);
+      this.userBeerCollection = newCollection
     });
   }
 
