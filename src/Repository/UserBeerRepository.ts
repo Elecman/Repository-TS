@@ -11,12 +11,7 @@ export class UserBeerRepository implements IBaseRepository<TUserFragment> {
   }
 
   public async fetchAll(): Promise<TMaybe<TUserFragment[]>> {
-    try {
-      const {data} = await axios.get<TUserFragment[]>('https://random-data-api.com/api/v2/users?size=20');
-      return data;
-    } catch (e) {
-      console.error(e);
-    }
+    throw new Error("Method not implemented.");
   }
 
   public async fetchOne(id: string): Promise<TMaybe<TUserFragment>> {
