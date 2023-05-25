@@ -1,6 +1,5 @@
 import { IBaseRepository } from "./BaseRepository";
 import { makeAutoObservable} from "mobx";
-import axios from "axios";
 import { TMaybe } from "../TypeUtils";
 import { TUserFragment } from "../Scheme/UserScheme";
 
